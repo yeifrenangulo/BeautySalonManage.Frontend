@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #FF725E;
+  --color-primary-hover: #FA5841;
+  --color-font: #3A3A3A;
+  --color-label: #696766;
+}
+
+* {
+  font-family: 'Poppins';
+  padding: 0;
+  margin: 0;
+}
