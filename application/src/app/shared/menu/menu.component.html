@@ -1,0 +1,167 @@
+<div class="row container-header">
+  <div class="col-6">
+    <div class="d-flex mt-2">
+      <div
+        id="navMenu"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseSidebar"
+        aria-expanded="false"
+        aria-controls="collapseSidebar"
+        [ngClass]="{ active: toggle }"
+        (click)="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <a routerLink="/home">
+        <div class="container-logo"></div>
+      </a>
+    </div>
+  </div>
+  <div
+    class="col-6 d-flex justify-content-end aling-content-center container-dropdown"
+  >
+    <a
+      class="nav-link"
+      id="navbarDropdownUser"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <div class="avatar avatar-xl">
+        <img
+          class="rounded-circle"
+          src="../../../assets/img/user-2.png"
+          alt=""
+        />
+      </div>
+    </a>
+    <div
+      class="dropdown-menu dropdown-caret dropdown-menu-end"
+      aria-labelledby="navbarDropdownUser"
+    >
+      <div class="d-flex">{{ userSession.userName }}</div>
+      <span class="badge-role">Administrador</span>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item option-user" href="#"
+        ><i class="fa fa-user-pen"></i> Configuración de cuenta</a
+      >
+      <button class="dropdown-item option-user" (click)="logout()"
+        ><i class="fa fa-arrow-right-from-bracket"></i> Cerrar Sesión</button
+      >
+    </div>
+  </div>
+</div>
+
+<div class="container-sidebar animate__animated animate__fadeInLeft">
+  <div class="collapse collapse-horizontal" id="collapseSidebar">
+    <div class="container-sidebar-items">
+      <a class="dropdown-item option-user mt-3" routerLink="/home"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseSidebar"
+        aria-expanded="false"
+        aria-controls="collapseSidebar"
+        (click)="toggleMenu()"
+      ><i class="fa fa-home"></i> Inicio</a>
+      <div class="row d-flex mt-4">
+        <div class="col-3" style="font-size: 12px">General</div>
+        <div class="col-9 pt-2">
+          <hr />
+        </div>
+      </div>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSidebar"
+          aria-expanded="false"
+          aria-controls="collapseSidebar"
+          (click)="toggleMenu()"
+        ><i class="fa fa-users"></i> Usuarios</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSidebar"
+          aria-expanded="false"
+          aria-controls="collapseSidebar"
+          (click)="toggleMenu()"
+        ><i class="fa fa-gear"></i> Parametros</a
+        >
+      </li>
+      <div class="row d-flex mt-4">
+        <div class="col-3" style="font-size: 12px">Servicios</div>
+        <div class="col-9 pt-2 pt-2">
+          <hr />
+        </div>
+      </div>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSidebar"
+          aria-expanded="false"
+          aria-controls="collapseSidebar"
+          (click)="toggleMenu()"
+        ><i class="fa fa-calendar"></i> Agenda</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" routerLink="/customers"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSidebar"
+          aria-expanded="false"
+          aria-controls="collapseSidebar"
+          (click)="toggleMenu()"
+        ><i class="fa fa-user-tag"></i> Clientes</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSidebar"
+          aria-expanded="false"
+          aria-controls="collapseSidebar"
+          (click)="toggleMenu()"
+        ><i class="fa fa-user-shield"></i> Colaboradores</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSidebar"
+          aria-expanded="false"
+          aria-controls="collapseSidebar"
+          (click)="toggleMenu()"
+        ><i class="fa fa-cart-shopping"></i> Servicios</a
+        >
+      </li>
+      <div class="row d-flex mt-4">
+        <div class="col-3" style="font-size: 12px">Informes</div>
+        <div class="col-9 pt-2">
+          <hr />
+        </div>
+      </div>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSidebar"
+          aria-expanded="false"
+          aria-controls="collapseSidebar"
+          (click)="toggleMenu()"
+        ><i class="fa fa-receipt"></i> Informes</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseSidebar"
+          aria-expanded="false"
+          aria-controls="collapseSidebar"
+          (click)="toggleMenu()"
+        ><i class="fa fa-dollar-sign"></i> Liquidación de Pago</a
+        >
+      </li>
+    </div>
+  </div>
+</div>

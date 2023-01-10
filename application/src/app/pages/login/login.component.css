@@ -1,11 +1,11 @@
 .background-fondo {
-  background-color: #FEF0F0;
-  height: 828px;
-  overflow-x: hidden;
+  background-color: var(--color-background);
+  overflow: hidden;
 }
 
-.container-fondo {
-  height: 100%;
+.container-image {
+  margin-top: 30px; 
+  margin-bottom: 30px;
 }
 
 .container-login {
@@ -22,7 +22,7 @@
 }
 
 .formulario-login {
-  margin: 20px 90px;
+  margin: 0px 80px;
   padding-top: 50px;
   border-top: 2px solid var(--color-primary);
 }
@@ -33,7 +33,7 @@
   width: 20px;
   height: 20px;
   left: 12px;
-  top: 60%;
+  top: 50%;
   transform: translateY(-50%);
 }
 
@@ -54,7 +54,7 @@
 
 .did-floating-label-content {
   position: relative;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .did-floating-label {
@@ -64,7 +64,7 @@
   position: absolute;
   pointer-events: none;
   left: 34px;
-  top: 5px;
+  top: 2px;
   padding: 0px;
   background: transparent;
   transition: 0.2s ease all;
@@ -91,13 +91,26 @@
 .did-floating-input:focus ~ .did-floating-label {
   top: -11px;
   font-size: 13px;
-  /* color: #FF725E; */
+  color: var(--color-primary);
+}
+
+.did-floating-input:focus ~ .input-icon {
+  color: var(--color-primary);
 }
 
 .did-floating-input:not(:placeholder-shown) ~ .did-floating-label {
   top: -11px;
   font-size: 13px;
-  color: var(--color-label);
+}
+
+.error-field-input {
+  border-bottom: 1px solid #EB0000;
+}
+
+.error-field {
+  margin-top: 5px;
+  color: #EB0000;
+  margin-left: 10px;
 }
 
 .switch {

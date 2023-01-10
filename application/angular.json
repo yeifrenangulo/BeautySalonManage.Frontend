@@ -25,6 +25,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/libs/css/bootstrap.min.css",
+              "src/assets/libs/css/fontawesome.min.css",
+              "src/assets/libs/css/animate.min.css",
               "src/styles.css"
             ],
             "scripts": []

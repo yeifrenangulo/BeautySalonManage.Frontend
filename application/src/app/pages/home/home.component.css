@@ -1,0 +1,38 @@
+.container-header-home {
+  height: 250px;
+  background-color: var(--color-background);
+}
+
+.container-tittle {
+  padding-top: 110px;
+}
+
+.container-turns {
+  border-top: 1px solid #B4b4b4;
+  padding: 15px 0;
+}
+
+.card-turn {
+  background-color: #F3F3F3;
+  width: 350px;
+  height: 170px;
+  margin: 20px 41px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: -1px 0px 5px 3px rgba(232,232,232,0.93);
+}
+
+.link-detail:link, 
+.link-detail:visited, 
+.link-detail:active {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.link-detail:hover {
+  color: var(--color-primary-hover);
+}
+
+.text-turn {
+  color: var(--color-label);
+}
