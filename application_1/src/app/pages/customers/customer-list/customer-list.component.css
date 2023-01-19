@@ -1,0 +1,13 @@
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: var(--color-primary);
+  border-radius: 5px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn-without-border {
+  border: none;
+  background-color: transparent;
+}

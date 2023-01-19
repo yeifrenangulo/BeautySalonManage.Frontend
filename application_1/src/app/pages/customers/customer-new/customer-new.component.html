@@ -1,0 +1,118 @@
+<div class="animate__animated animate__fadeInRight">
+  <h1 class="tittle-medium">{{ titlePage }} cliente</h1>
+  <div class="container-form">
+    <!-- <button class="btn btn-light" routerLink="/customers">
+      <i class="fa fa-arrow-alt-circle-left"></i>
+      Regresar
+    </button> -->
+    <button nz-button nzType="default" routerLink="/customers">
+      <span nz-icon nzType="arrow-left"></span>
+      Regresar
+    </button>
+    <div class="control-form-md">
+      <form [formGroup]="customerForm" (submit)="onSubmit()">
+        <div class="row">
+          <div class="form-group col-5 mx-4">
+            <div class="floating-label-content">
+              <input
+                id="name"
+                class="floating-input"
+                type="text"
+                placeholder=" "
+                formControlName="name"
+                [ngClass]="{ 'error-field-input': submitted && nameInvalid }"
+                [readonly]="!isCreated"
+              />
+              <label for="name" class="floating-label">Nombre<span class="text-danger">*</span></label>
+            </div>
+            <div *ngIf="submitted && nameInvalid" class="error-field">
+                <span><i class="fa fa-exclamation-circle"></i> El campo Nombre es obligatorio</span>
+            </div>
+          </div>
+          <div class="form-group col-5 mx-4">
+            <div class="floating-label-content">
+              <input
+                id="surname"
+                class="floating-input"
+                type="text"
+                placeholder=" "
+                formControlName="surname"
+                [ngClass]="{ 'error-field-input': submitted && surnameInvalid }"
+                [readonly]="!isCreated"
+              />
+              <label for="surname" class="floating-label">Apellido<span class="text-danger">*</span></label>
+            </div>
+            <div *ngIf="submitted && surnameInvalid" class="error-field">
+                <span><i class="fa fa-exclamation-circle"></i> El campo Apellido es obligatorio</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="form-group col-5 mx-4">
+            <div class="floating-label-content">
+              <input
+                id="phone"
+                class="floating-input"
+                type="number"
+                placeholder=" "
+                formControlName="phone"
+                [ngClass]="{ 'error-field-input': submitted && phoneInvalid }"
+              />
+              <label for="phone" class="floating-label">Teléfono<span class="text-danger">*</span></label>
+            </div>
+            <div *ngIf="submitted && phoneInvalid" class="error-field">
+                <span><i class="fa fa-exclamation-circle"></i> El campo Teléfono es obligatorio</span>
+            </div>
+          </div>
+          <div class="form-group col-5 mx-4">
+            <div class="floating-label-content">
+              <input
+                id="dateBirth"
+                class="floating-input-date"
+                type="text"
+                placeholder=" "
+                formControlName="dateBirth"
+                bsDatepicker
+                [bsConfig]="configDate"
+                [isDisabled]="true"
+              />
+              <i class="fa fa-calendar-alt input-icon-date"></i>
+              <label for="dateBirth" class="floating-label">Fecha de Cumpleaños</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="form-group col-5 mx-4">
+            <div class="floating-label-content">
+              <select 
+                id="gender" 
+                class="floating-select" 
+                formControlName="gender" 
+                [ngClass]="{ 'error-field-input': submitted && genderInvalid }"
+                required
+              >
+                <option value></option>
+                <option value="1">Hombre</option>
+                <option value="2">Mujer</option>
+              </select>
+              <label for="gender" class="floating-label">Género<span class="text-danger">*</span></label>
+            </div>
+            <div *ngIf="submitted && genderInvalid" class="error-field">
+                <span><i class="fa fa-exclamation-circle"></i> El campo Género es obligatorio</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="form-group text-center">
+            <button type="submit" nz-button nzType="primary" *ngIf="isCreated">
+              Guardar
+            </button>
+            <button type="submit" nz-button nzType="primary" *ngIf="!isCreated">
+              Editar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

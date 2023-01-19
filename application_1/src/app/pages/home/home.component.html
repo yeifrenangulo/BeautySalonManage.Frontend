@@ -1,0 +1,35 @@
+<div class="animate__animated animate__fadeInRight container-page">
+  <header class="container-header-home">
+    <div class="container container-tittle">
+      <p class="h1 tittle-ligth">{{ saludo }}, <span class="tittle-semibold">{{ userSession.fullName }}</span></p>
+      <p class="tittle-ligth">
+        Estos son algunos de los turnos para el día de hoy <span class="tittle-semibold">{{ fechaActual | formatDate }}</span>
+      </p>
+    </div>
+  </header>
+  <section>
+    <div class="container mt-5">
+      <h1 class="tittle-medium">Turnos</h1>
+      <div class="container-turns">
+        <div class="card-turn col-4">
+          <div class="d-flex flex-column">
+            <div class="col-12">
+              <p class="h3 tittle-regular">Doña Carmen</p>
+              <p class="text-turn"><i class="fa fa-cloud-sun"></i> 10:30 a.m.</p>
+            </div>
+            <div class="col-12">
+              <div class="d-flex flex-row">
+                <div class="col-6 pt-4">
+                  <span class="text-turn">2 hr 30 min</span>
+                </div>
+                <div class="col-6 pt-4 text-end">
+                  <a href="" class="link-detail">Ver Detalle</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

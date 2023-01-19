@@ -1,0 +1,47 @@
+@import '../../../../../assets/libs/css/variables.scss';
+
+.container-header-home {
+	height: 290px;
+	background-color: $color-background;
+}
+
+.container-tittle {
+	padding-top: 140px;
+}
+
+.container-turns {
+	border-top: 1px solid #B4b4b4;
+	padding: 15px 0;
+}
+
+.card-turn {
+	background-color: #F3F3F3;
+	width: 350px;
+	height: 170px;
+	margin: 20px 41px;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: -1px 0px 5px 3px rgba(232,232,232,0.93);
+}
+
+.link-detail {
+	&:link {
+		text-decoration: none;
+		color: $color-primary;
+	}
+	&:visited {
+		text-decoration: none;
+		color: $color-primary;
+	}
+	&:active {
+		text-decoration: none;
+		color: $color-primary;
+	}
+	&:hover {
+		color: $color-primary-hover;
+	}
+}
+
+.text-turn {
+	color: $color-label;
+}

@@ -1,0 +1,114 @@
+<div class="animate__animated animate__fadeInRight mb-2">
+  <h1 class="tittle-medium">Clientes</h1>
+  <div class="container-form">
+    <div class="d-flex flex-column">
+      <div class="col-12 text-end">
+        <button nz-button nzType="primary" [routerLink]="[0]">
+          <span nz-icon nzType="plus" nzTheme="outline"></span>
+          Agregar cliente
+        </button>
+      </div>
+      <div class="col-12 mt-2">  
+        <nz-spin [nzIndicator]="indicatorTemplate" [nzSpinning]="loading" [nzDelay]="500">
+          <ng-template #indicatorTemplate>
+            <div class="mt-5">
+              <span class="text-muted" nz-icon nzType="loading" style="font-size: 100px;"></span>
+            </div>
+          </ng-template>
+          <nz-table #smallTable nzShowPagination="false" nzOuterBordered nzSize="small" [nzData]="customers">
+            <thead>
+              <tr>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Teléfono</th>
+                <th class="text-center">Día de Cumpleaños</th>
+                <th class="text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor="let customer of customers; let i = index">
+                <td>
+                  <button class="link-detail" nzTooltipTitle="Ver detalle" nzTooltipPlacement="bottom" nz-tooltip (click)="showModal(detailModal, i)">
+                    {{ customer.name }} {{ customer.surname }}
+                  </button>
+                </td>
+                <td>{{ customer.phone }}</td>
+                <td>{{ customer.dateBirth | formatString }}</td>
+                <td>
+                  <a class="btn btn-outline-success btn-sm" nzTooltipTitle="Editar" nzTooltipPlacement="left" nz-tooltip [routerLink]="[customer.customerId]">
+                    <span nz-icon nzType="edit" nzTheme="fill" style="font-size: 18px;"></span>
+                  </a>
+                  <nz-divider nzType="vertical"></nz-divider>
+                  <button nzTooltipTitle="Eliminar" nzTooltipPlacement="right" nz-tooltip class="btn btn-outline-danger btn-sm" (click)="showModal(deleteModal, i)">
+                    <span nz-icon nzType="delete" nzTheme="fill" style="font-size: 18px;"></span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </nz-spin>
+        <div class="text-end mt-3">
+          <nz-pagination nzSize="small" [nzShowTotal]="totalTemplate" (nzPageIndexChange)="changePage($event)" [nzPageIndex]="pageNumber" [nzTotal]="pageTotal"></nz-pagination>
+          <ng-template #totalTemplate let-total>Total {{ pageTotal }} elementos</ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #dataEmpty let-name>
+    <div class="my-5 text-center">
+      <span nz-icon nzType="warning" nzTheme="outline" style="font-size: 150px; color: #ccc;"></span>
+      <p class="mt-3 h4 text-black-50">No hay información</p>
+    </div>
+  </ng-template>
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    [nzTitle]="modalTitle"
+    [nzContent]="modalContent"
+    [nzFooter]="modalFooter"
+    (nzOnCancel)="handleCancel()"
+    nzCentered
+  >
+    <ng-template #modalTitle>
+      Información del cliente
+    </ng-template>
+
+    <ng-template #modalContent>
+      <div class="container">
+        <ul class="list-group">
+          <li class="list-group-item"><span class="fw-bolder">Nombre: </span>{{ customer.name }} {{ customer.surname }}</li>
+          <li class="list-group-item"><span class="fw-bolder">Teléfono: </span>{{ customer.phone }}</li>
+          <li class="list-group-item"><span class="fw-bolder">Género: </span>{{ customer.genderDescription }}</li>
+          <li class="list-group-item"><span class="fw-bolder">Fecha de Cumpleaños: </span>{{ customer.dateBirth | formatString }}</li>
+        </ul>
+      </div>
+    </ng-template>
+
+    <ng-template #modalFooter>
+      <button nz-button nzType="default" class="btn btn-outline-primary" (click)="modalRef?.hide()">Cerrar</button>
+    </ng-template>
+  </nz-modal>
+  <ng-template #detailModal>
+    <div class="modal-header bg-primary bg-gradient p-4">
+      <h4 class="modal-title pull-left text-white"><span class="mr-5"><i class="fa fa-info-circle"></i></span>   Información del cliente</h4>
+    </div>
+    <div class="modal-body">
+      
+    </div>
+    <div class="modal-footer">
+      
+    </div>
+  </ng-template>
+  <ng-template #deleteModal>
+    <div class="modal-header bg-warning bg-gradient p-4">
+      <h4 class="modal-title"><span class="mr-5"><i class="fa fa-exclamation-triangle"></i></span>   Confirmar eliminación del cliente</h4>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <p>¿Desea elmiminar al cliente <span class="fw-bolder">{{ customer.name }} {{ customer.surname }}</span>?</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline-secondary" (click)="modalRef?.hide()">Cerrar</button>
+      <button class="btn btn-warning" (click)="deleteCustomer(customer.customerId)">Si, eliminar</button>
+    </div>
+  </ng-template>
+</div>

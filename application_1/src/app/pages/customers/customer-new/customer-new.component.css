@@ -1,0 +1,44 @@
+.floating-input-date {
+  width: 100%;
+  height: 36px;
+  border: none;
+  border-bottom: 2px solid #cecece;
+  padding: 10px 15px;
+  font-size: 20px;
+  color: var(--color-font);
+  caret-color: var(--color-primary);
+}
+
+.floating-input-date:focus {
+  outline: none;
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.floating-input-date:focus ~ .floating-label {
+  top: -11px;
+  font-size: 13px;
+  color: var(--color-primary);
+}
+
+.floating-input-date:focus ~ .input-icon-date {
+  color: var(--color-primary);
+}
+
+.floating-input-date:not(:placeholder-shown) ~ .floating-label {
+  top: -11px;
+  font-size: 13px;
+}
+
+.input-icon-date {
+  color: var(--color-label);
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+input:read-only {
+  background-color: #f8f9fa;
+}

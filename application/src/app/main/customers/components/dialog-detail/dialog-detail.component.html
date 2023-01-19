@@ -1,0 +1,19 @@
+<div class="mt-2">
+  <ul class="list-group">
+    <li class="list-group-item"><span class="fw-bolder">Id: </span>{{ customer.customerId }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Nombre: </span>{{ customer.name }} {{ customer.surname }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Teléfono: </span>{{ customer.phone }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Género: </span>{{ customer.genderDescription }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Fecha de cumpleaños: </span>{{ customer.dateBirth | formatString }}</li>
+  </ul>
+</div>
+<div class="mt-2 text-center">
+  <button
+    pButton
+    pRipple
+    label="Cerrar"
+    icon="pi pi-times"
+    (click)="closeModal()"
+    class="p-button-sm p-button-info"
+  ></button>
+</div>

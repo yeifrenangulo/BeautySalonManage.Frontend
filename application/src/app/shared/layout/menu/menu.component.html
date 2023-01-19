@@ -1,0 +1,112 @@
+<div class="row container-header">
+  <div class="col-6">
+    <div class="d-flex mt-2">
+      <div
+        id="navMenu"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseSidebar"
+        aria-expanded="false"
+        aria-controls="collapseSidebar"
+        [ngClass]="{ active: toggle }"
+        (click)="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <a routerLink="/home">
+        <div class="container-logo"></div>
+      </a>
+    </div>
+  </div>
+  <div class="col-6 d-flex justify-content-end aling-content-center container-dropdown">
+    <a
+      class="nav-link my-auto px-3"
+      id="navbarDropdownUser"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <p-avatar icon="pi pi-user" size="large" shape="circle"></p-avatar>
+    </a>
+    <div
+      class="dropdown-menu dropdown-caret dropdown-menu-end"
+      aria-labelledby="navbarDropdownUser"
+    >
+      <div class="d-flex">{{ userSession.userName }}</div>
+      <span class="badge-role">Administrador</span>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item option-user p-0">
+        <i class="pi pi-user-edit link-icon"></i> Configuración de cuenta
+      </button>
+      <button class="dropdown-item option-user p-0" (click)="logout()">
+        <i class="pi pi-sign-out link-icon"></i> Cerrar Sesión
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container-sidebar animate__animated animate__fadeInLeft">
+  <div class="collapse collapse-horizontal" id="collapseSidebar">
+    <div class="container-sidebar-items">
+      <li class="list-group-item mt-3 mb-4">
+        <a class="dropdown-item option-user" routerLink="/home"
+        ><i class="pi pi-home link-icon"></i> Inicio</a>
+      </li>
+      <p-divider>
+        <span style="font-size: 12px">General</span>
+      </p-divider>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+        ><i class="pi pi-cog link-icon"></i> Parametros</a
+        >
+      </li>
+      <li class="list-group-item mb-4">
+        <a class="dropdown-item option-user" href=""
+        ><i class="pi pi-shield link-icon"></i> Usuarios</a
+        >
+      </li>
+      <p-divider>
+        <span style="font-size: 12px">Servicios</span>
+      </p-divider>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+        ><i class="pi pi-calendar link-icon"></i> Agenda</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" routerLink="/customers"
+        ><i class="pi pi-user-plus link-icon"></i> Clientes</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+        ><i class="pi pi-users link-icon"></i> Colaboradores</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+        ><i class="pi pi-clock link-icon"></i> Servicios</a
+        >
+      </li>
+      <li class="list-group-item mb-4">
+        <a class="dropdown-item option-user" href=""
+        ><i class="pi pi-shopping-cart link-icon"></i> Ventas</a
+        >
+      </li>
+      <p-divider>
+        <span style="font-size: 12px">Informes</span>
+      </p-divider>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+        ><i class="pi pi-file link-icon"></i> Informes</a
+        >
+      </li>
+      <li class="list-group-item">
+        <a class="dropdown-item option-user" href=""
+        ><i class="pi pi-money-bill link-icon"></i> Liquidación de Pago</a
+        >
+      </li>
+    </div>
+  </div>
+</div>

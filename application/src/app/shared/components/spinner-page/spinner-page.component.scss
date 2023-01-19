@@ -1,0 +1,52 @@
+@import '../../../../assets/libs/css/variables.scss';
+
+.spin-loader {
+  position: relative;
+}
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  margin-top: 300px;
+  span {
+    border: 0;
+    margin: 0;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    border-radius: 50%;
+    animation: spin 2s ease infinite;
+    transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  :first-child {
+    background: $color-primary;
+    animation-delay: -1.5s;
+  }
+  :nth-child(2) {
+    background: $color-primary-focus;
+    animation-delay: -1s;
+  }
+  :nth-child(3) {
+    background: $color-primary;
+    animation-delay: -0.5s;
+  }
+  :last-child {
+    background: $color-primary-focus;
+  }
+}
+.text-loader {
+  position: absolute;
+  margin-top: 440px;
+  left: 33%;
+}
+
+@keyframes spin {
+  0%{transform: translate(0) scale(0)}
+  25%{transform: translate(200%) scale(1.5)}
+  50%{transform: translate(200%, 200%) scale(0)}
+  75%{transform: translate(0, 200%) scale(1.5)}
+  100%{transform: translate(0) scale(0)}
+}

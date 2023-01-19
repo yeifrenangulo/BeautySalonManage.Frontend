@@ -1,28 +1,26 @@
 import { Injectable } from '@angular/core';
-import * as alertify from 'alertifyjs';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
-  constructor() { 
-    alertify.set('notifier','position', 'top-right');
+  constructor(private messageService: MessageService) { }
+
+  showSuccess(message: string, time = 5000, progressBar = false) {
+    this.messageService.add({severity:'success', summary:'Exitoso', detail: message, life: time});
   }
 
-  showSuccess(message: String, time = 5) {
-    alertify.success(message, time);
+  showWarning(message: string, time = 5000) {
+    this.messageService.add({severity:'warn', summary:'Advertencia', detail: message, life: time});
   }
 
-  showWarning(message: String, time = 0) {
-    alertify.warning(message, time);
+  showError(message: string, time = 5000) {
+    this.messageService.add({severity:'error', summary:'Error', detail: message, life: time});
   }
 
-  showError(message: String, time = 0) {
-    alertify.error(message, time);
-  }
-
-  showInfo(message: String, time = 5) {
-    alertify.message(message, time);
+  showInfo(message: string, time = 5000, progressBar = false) {
+    this.messageService.add({severity:'info', summary:'Info', detail: message, life: time});
   }
 }

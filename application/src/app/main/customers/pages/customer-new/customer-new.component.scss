@@ -1,0 +1,44 @@
+@import '../../../../../assets/libs/css/variables.scss';
+
+.floating-input-date {
+	width: 100%;
+	height: 36px;
+	border: none;
+	border-bottom: 2px solid #cecece;
+	padding: 10px 15px;
+	font-size: 20px;
+	color: $color-font;
+	caret-color: $color-primary;
+	&:focus {
+		outline: none;
+		border-bottom: 1px solid $color-primary;
+		& ~ .floating-label {
+			top: -11px;
+			font-size: 13px;
+			color: $color-primary;
+		}
+		& ~ .input-icon-date {
+			color: $color-primary;
+		}
+	}
+	&:not(:placeholder-shown) {
+		& ~ .floating-label {
+			top: -11px;
+			font-size: 13px;
+		}
+	}
+}
+.input-icon-date {
+	color: $color-label;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	right: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+input {
+	&:read-only {
+		background-color: #f8f9fa;
+	}
+}

@@ -1,2 +1,6 @@
-<app-menu *ngIf="user"></app-menu>
-<router-outlet></router-outlet>
+<app-menu *ngIf="user" (toggleResponse)="toggleMenu($event)"></app-menu>
+<p-toast></p-toast>
+
+<div [ngClass]="{ 'container-page-home': user && isHome, 'container-page': user && !isHome, active: toggle }">
+  <router-outlet></router-outlet>
+</div>

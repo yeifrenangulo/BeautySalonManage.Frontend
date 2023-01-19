@@ -16,7 +16,7 @@ export class GlobalErrorHandler implements ErrorHandler {
     const errorService = this.injector.get(ErrorService);
     const notifier = this.injector.get(NotificationService);
 
-    let message: string | String;
+    let message: string;
     let stackTrace: string;
 
     if (error instanceof HttpErrorResponse) {
@@ -25,24 +25,27 @@ export class GlobalErrorHandler implements ErrorHandler {
       if (error.status === 400 || error.status === 404) {
         if (error.error['Errors']) {
           for (let err of error.error['Errors']) {
-            notifier.showWarning(err);
+            notifier.showWarning(err, 5000);
           }
+        }
+        else if (error.error['errors']) {
+          notifier.showWarning(error.error['title'], 5000);
         }
         else {
           message = errorService.getServerMessage(error);
-          notifier.showWarning(message);
+          notifier.showWarning(message, 5000);
         }
       }
       else {
         message = errorService.getServerMessage(error);
-        notifier.showError(message);
+        notifier.showError(message, 5000);
       }
     } 
     else {
       // Client Error
       message = errorService.getClientMessage(error);
       stackTrace = errorService.getClientStack(error);
-      notifier.showError(message);
+      notifier.showError(message, 5000);
     }
 
     console.error(error);

@@ -1,0 +1,83 @@
+<div class="background-fondo">
+  <div class="row d-flex">
+    <div class="col-md-8 d-md-block d-none container-fondo">
+      <img
+        class="mx-auto container-image"
+        src="../../../assets/img/fondo.png"
+        alt="Fondo"
+      />
+    </div>
+    <div class="col-sm-12 col-md-4 container-login">
+      <div class="row d-flex flex-columns aling-content-around">
+        <div class="col-12 text-center mb-3">
+          <img src="../../../assets/img/logo.png" height="60" alt="Logo" />
+        </div>
+        <div class="col-12 mt-5">
+          <h2 class="text-center tittle-login mb-2">Inicio de Sesión</h2>
+          <div class="formulario-login">
+            <form [formGroup]="loginForm" (submit)="onSubmit()">
+              <div class="form-group">
+                <div class="did-floating-label-content">
+                  <input
+                    id="usuario"
+                    class="did-floating-input"
+                    type="text"
+                    placeholder=" "
+                    formControlName="username"
+                    [ngClass]="{ 'error-field-input': submitted && userInvalid }"
+                    required
+                  />
+                  <i class="fa fa-user input-icon"></i>
+                  <label for="usuario" class="did-floating-label">Usuario</label>
+                </div>
+                <div *ngIf="submitted && userInvalid" class="error-field">
+                    <span><i class="fa fa-exclamation-circle"></i> El usuario es obligatorio</span>
+                </div>
+              </div>
+              <div class="form-group mt-4">
+                <div class="did-floating-label-content">
+                  <input
+                    id="contraseña"
+                    class="did-floating-input"
+                    type="password"
+                    placeholder=" "
+                    formControlName="password"
+                    [ngClass]="{ 'error-field-input': submitted && passwordInvalid }"
+                    required
+                  />
+                  <i class="fa fa-key input-icon"></i>
+                  <label for="contraseña" class="did-floating-label"
+                    >Contraseña</label
+                  >
+                </div>
+                <div *ngIf="submitted && passwordInvalid" class="error-field">
+                  <span><i class="fa fa-exclamation-circle"></i> La contraseña es obligatoria</span>
+                </div>
+              </div>
+              <button class="button-large button-primary mt-3 mb-3" type="submit">
+                Ingresar
+              </button>
+              <div class="d-flex flex-rows">
+                <!-- <input
+                  type="checkbox"
+                  name="recordar"
+                  id="recordar"
+                  class="switch-input"
+                />
+                <label for="recordar" class="switch"></label>
+                <span class="text-switch">Recordar mi usuario</span> -->
+                <nz-switch formControlName="switchValue"></nz-switch>
+                <span class="text-switch">Recordar mi usuario</span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- <div class="col-12">
+          <span class="text-primary">
+            by Alexis Angulo
+          </span>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
