@@ -14,16 +14,22 @@ import { PanelModule } from 'primeng/panel';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
-
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     BsDatepickerModule.forRoot(),
+    NgxMaskModule.forRoot(maskConfig),
+    TimepickerModule.forRoot()
   ],
   exports: [
     AvatarModule,
@@ -34,11 +40,13 @@ import { TooltipModule } from 'primeng/tooltip';
     DividerModule,
     InputSwitchModule,
     MenubarModule,
+    NgxMaskModule,
     PaginatorModule,
     PanelModule,
     ProgressBarModule,
     TableModule,
     TagModule,
+    TimepickerModule,
     ToastModule,
     TooltipModule,
   ]

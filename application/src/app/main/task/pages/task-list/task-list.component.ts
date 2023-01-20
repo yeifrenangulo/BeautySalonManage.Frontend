@@ -1,47 +1,42 @@
 import { Component } from '@angular/core';
-import { Customer } from '@app/models/customer';
+import { DialogDeleteComponent } from '@app/main/task/components/dialog-delete/dialog-delete.component';
 import { ResponseServer } from '@app/models/response-server';
-import { CustomerService } from '@app/services/customer.service';
+import { Task } from '@app/models/service';
+import { TaskService } from '@app/services/task.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { map } from 'rxjs';
-import { DialogDeleteComponent } from '../../components/dialog-delete/dialog-delete.component';
-import { DialogDetailComponent } from '../../components/dialog-detail/dialog-detail.component';
+import { DialogDetailServiceComponent } from '../../components/dialog-detail-service/dialog-detail-service.component';
 
 @Component({
-  selector: 'app-customer-list',
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.scss']
+  selector: 'app-task-list',
+  templateUrl: './task-list.component.html',
+  styleUrls: ['./task-list.component.scss']
 })
-export class CustomerListComponent {
+export class TaskListComponent {
   pageNumber: number = 1;
   pageTotal: number;
   pageSize: number;
-  name: string = '';
-  surname: string = '';
+  tasks: Task[] = [];
   response: ResponseServer;
-  customers: Customer[] = [];
   loading = false;
   ref: DynamicDialogRef;
-
-  constructor(private service: CustomerService, public dialogService: DialogService) { }
+  
+  constructor(private service: TaskService, public dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.loading = true;
-    this.getCustomers();
+    this.getServices();
   }
 
-  getCustomers():void {
-    let parameters = `name=${this.name}&surname=${this.surname}&pageNumber=${this.pageNumber}`;
-
-    this.service.getAll(parameters).pipe(map(res => {
+  getServices():void {
+    this.service.getAll(`pageNumber=${this.pageNumber}`).pipe(map(res => {
       if (res.succeded) {
-        this.customers = res.data;
+        this.tasks = res.data;
         this.pageNumber = res.pageNumber;
         this.pageTotal = res.pageTotal;
         this.pageSize = res.pageSize;
       }
 
-      console.log(this.customers);
       return res;
     }))
     .subscribe(() => this.loading = false);
@@ -49,13 +44,13 @@ export class CustomerListComponent {
 
   changePage(event: any): void {
     this.pageNumber = event.page + 1;
-    this.getCustomers();
+    this.getServices();
   }
 
-  showModalDetail(customer: Customer): void {
-    this.ref = this.dialogService.open(DialogDetailComponent, {
-      header: 'Información del cliente',
-      data: customer,
+  showModalDetail(task: Task): void {
+    this.ref = this.dialogService.open(DialogDetailServiceComponent, {
+      header: 'Información del servicio',
+      data: task,
       styleClass: 'header-detail',
       width: '45%',
       contentStyle: {"max-height": "500px", "overflow": "auto"},
@@ -63,10 +58,10 @@ export class CustomerListComponent {
     });
   }
 
-  showModalDelete(customer: Customer): void {
+  showModalDelete(task: Task): void {
     this.ref = this.dialogService.open(DialogDeleteComponent, {
       header: 'Confirmar eliminación',
-      data: customer,
+      data: task,
       styleClass: 'header-delete',
       width: '45%',
       contentStyle: {"max-height": "500px", "overflow": "auto"},
@@ -75,7 +70,7 @@ export class CustomerListComponent {
 
     this.ref.onClose.subscribe((isDeleted: boolean) =>{
       if (isDeleted) {
-        this.getCustomers();
+        this.getServices();
       }
     });
   }

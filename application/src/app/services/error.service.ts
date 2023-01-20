@@ -15,6 +15,15 @@ export class ErrorService {
     }
 
     getServerMessage(error: HttpErrorResponse): string {
-      return error.error['Message'];
+      if (error.error['Message']) {
+        return error.error['Message'];
+      }
+      else {
+        if (error.status == 0) {
+          return 'Recurso no encontrado, comuniquese con el administrador';
+        }
+        
+        return error.statusText;
+      }
     }
 }

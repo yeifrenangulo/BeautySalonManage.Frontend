@@ -1,5 +1,8 @@
 <div class="mt-5">
-  <div class="animate__animated animate__fadeInRight">
+  <div class="animate__animated animate__fadeInUp" *ngIf="loading">
+    <app-spinner-page></app-spinner-page>
+  </div>
+  <div class="animate__animated animate__fadeInRight" *ngIf="!loading">
     <h1 class="tittle-medium">{{ titlePage }} cliente</h1>
     <div class="container-form">
       <div class="control-form-md">
@@ -60,9 +63,10 @@
                 <input
                   id="phone"
                   class="floating-input"
-                  type="number"
+                  type="text"
                   placeholder=" "
                   formControlName="phone"
+                  mask="000 000 0000"
                   [ngClass]="{
                     'error-field-input': submitted && phoneInvalid
                   }"
@@ -130,7 +134,8 @@
                 pButton
                 pRipple
                 label="Cancelar"
-                icon="pi pi-times"
+                [icon]="iconCancel"
+                [disabled]="loadButton"
                 class="p-button-sm p-button-secondary p-button-text mr-2"
                 routerLink="/customers"
               ></button>
@@ -141,7 +146,8 @@
                 pRipple
                 type="submit"
                 label="Guardar"
-                icon="pi pi-check"
+                [icon]="iconSave"
+                [disabled]="loadButton"
                 class="p-button-sm mr-2"
               ></button>
             </div>

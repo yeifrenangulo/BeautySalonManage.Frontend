@@ -23,17 +23,22 @@ export class GlobalErrorHandler implements ErrorHandler {
       // Server Error
 
       if (error.status === 400 || error.status === 404) {
-        if (error.error['Errors']) {
-          for (let err of error.error['Errors']) {
-            notifier.showWarning(err, 5000);
+        try {
+          if (error.error['Errors']) {
+            for (let err of error.error['Errors']) {
+              notifier.showWarning(err, 5000);
+            }
+          }
+          else if (error.error['errors']) {
+            notifier.showWarning(error.error['title'], 5000);
+          }
+          else {
+            message = errorService.getServerMessage(error);
+            notifier.showWarning(message, 5000);
           }
         }
-        else if (error.error['errors']) {
-          notifier.showWarning(error.error['title'], 5000);
-        }
-        else {
-          message = errorService.getServerMessage(error);
-          notifier.showWarning(message, 5000);
+        catch(e) {
+          notifier.showError('Hubo un error interno, comuniquese con el administrador', 5000);
         }
       }
       else {

@@ -9,8 +9,8 @@
         <div class="col-12 mt-2 animate__animated animate__fadeInUp" *ngIf="loading">
           <app-progressbar-table caption="Estamos consultando a los clientes registrados"></app-progressbar-table>
         </div>
-        <div class="col-12 mt-2 animate__animated animate__fadeInUp" *ngIf="customers">
-          <table class="table table-default">
+        <div class="col-12 mt-2 animate__animated animate__fadeInUp">
+          <table class="table table-default" *ngIf="customers?.length > 0">
             <thead>
               <tr>
                 <th class="text-center">Nombre</th>
@@ -26,8 +26,8 @@
                     {{ customer.name }} {{ customer.surname }}
                   </button>
                 </td>
-                <td class="text-center">{{ customer.phone }}</td>
-                <td class="text-center">{{ customer.dateBirth | formatString }}</td>
+                <td class="text-center">{{ customer.phone | mask: '000 000 0000' }}</td>
+                <td class="text-center">{{ customer.dateBirth | formatDateBirth }}</td>
                 <td class="text-center">
                   <span class="p-buttonset">
                     <button pButton type="button" icon="pi pi-pencil" class="button-icon p-button-sm p-button-text p-button-success" pTooltip="Modificar" tooltipPosition="left" routerLink="/customers/edit/{{customer.customerId}}"></button>
@@ -37,8 +37,8 @@
               </tr>
             </tbody>
           </table>
-          <p-paginator *ngIf="customers" [rows]="10" [totalRecords]="pageTotal" (onPageChange)="changePage($event)"></p-paginator>
-          <app-empty *ngIf="!customers && !loading" caption="Lo sentimos, no se encontraron clientes registrados"></app-empty>
+          <p-paginator *ngIf="customers?.length > 0" [rows]="10" [totalRecords]="pageTotal" (onPageChange)="changePage($event)"></p-paginator>
+          <app-empty *ngIf="customers?.length <= 0 && !loading" caption="Lo sentimos, no se encontraron clientes registrados"></app-empty>
         </div>
       </div>
     </div>

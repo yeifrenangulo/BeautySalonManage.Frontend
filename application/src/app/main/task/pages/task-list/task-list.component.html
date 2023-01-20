@@ -1,0 +1,46 @@
+<div class="mt-5">
+  <div class="animate__animated animate__fadeInRight">
+    <h1 class="tittle-medium">Servicios</h1>
+    <div class="container-form">
+      <div class="d-flex flex-column">
+        <div class="col-12 text-end">
+          <button pButton pRipple label="Agregar servicio" icon="pi pi-plus" class="p-button-sm mr-2" routerLink="/services/new"></button>
+        </div>
+        <div class="col-12 mt-2 animate__animated animate__fadeInUp" *ngIf="loading">
+          <app-progressbar-table caption="Estamos consultando los servicios registrados"></app-progressbar-table>
+        </div>
+        <div class="col-12 mt-2 animate__animated animate__fadeInUp">
+          <table class="table table-default" *ngIf="tasks?.length > 0">
+            <thead>
+              <tr>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Duración</th>
+                <th class="text-center">Precio</th>
+                <th class="text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor="let task of tasks; let i = index">
+                <td class="text-center">
+                  <button class="link-detail" pTooltip="Ver detalle" tooltipPosition="bottom" (click)="showModalDetail(task)">
+                    {{ task.title }}
+                  </button>
+                </td>
+                <td class="text-center">{{ task.duration | formatDuration }}</td>
+                <td class="text-center">{{ task.price | mask: 'separator':'.' }}</td>
+                <td class="text-center">
+                  <span class="p-buttonset">
+                    <button pButton type="button" icon="pi pi-pencil" class="button-icon p-button-sm p-button-text p-button-success" pTooltip="Modificar" tooltipPosition="left" routerLink="/services/edit/{{task.serviceId}}"></button>
+                    <button pButton type="button" icon="pi pi-trash" class="button-icon p-button-sm p-button-text p-button-danger" pTooltip="Eliminar" tooltipPosition="right" (click)="showModalDelete(task)"></button>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p-paginator *ngIf="tasks?.length > 0" [rows]="10" [totalRecords]="pageTotal" (onPageChange)="changePage($event)"></p-paginator>
+          <app-empty *ngIf="tasks?.length <= 0 && !loading" caption="Lo sentimos, no se encontraron servicios registrados"></app-empty>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

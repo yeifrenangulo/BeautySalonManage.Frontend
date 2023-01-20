@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MenuComponent } from './layout/menu/menu.component';
 import { DesignComponentsModule } from '@app/design-components/design-components.module';
 import { RouterModule } from '@angular/router';
-import { FormatDatePipe, FormatStringPipe } from '@app/pipes/format-string.pipe';
+import { FormatDatePipe, FormatDateBirthPipe, FormatDurationPipe } from '@app/pipes/format-string.pipe';
 import { EmptyComponent } from './components/empty/empty.component';
 import { ProgressbarTableComponent } from './components/progressbar-table/progressbar-table.component';
 import { SpinnerPageComponent } from './components/spinner-page/spinner-page.component';
@@ -14,7 +14,8 @@ import { SpinnerPageComponent } from './components/spinner-page/spinner-page.com
   declarations: [
     EmptyComponent,
     FormatDatePipe,
-    FormatStringPipe,
+    FormatDateBirthPipe,
+    FormatDurationPipe,
     MenuComponent, 
     ProgressbarTableComponent, 
     SpinnerPageComponent
@@ -27,7 +28,8 @@ import { SpinnerPageComponent } from './components/spinner-page/spinner-page.com
   exports: [
     EmptyComponent,
     FormatDatePipe,
-    FormatStringPipe,
+    FormatDateBirthPipe,
+    FormatDurationPipe,
     MenuComponent,
     ProgressbarTableComponent,
     SpinnerPageComponent

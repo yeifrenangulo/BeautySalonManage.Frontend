@@ -1,0 +1,127 @@
+<div class="mt-5">
+  <div class="animate__animated animate__fadeInUp" *ngIf="loading">
+    <app-spinner-page></app-spinner-page>
+  </div>
+  <div class="animate__animated animate__fadeInRight" *ngIf="!loading">
+    <h1 class="tittle-medium">{{ titlePage }} servicio</h1>
+    <div class="container-form">
+      <div class="control-form-md">
+        <form [formGroup]="taskForm" (submit)="onSubmit()">
+          <div class="row mt-5">
+            <div class="form-group col-6 px-5">
+              <div class="floating-label-content">
+                <input
+                  id="name"
+                  class="floating-input"
+                  type="text"
+                  placeholder=" "
+                  formControlName="title"
+                  [ngClass]="{ 'error-field-input': submitted && titleInvalid }"
+                />
+                <label for="name" class="floating-label"
+                  >Nombre<span class="text-danger">*</span></label
+                >
+              </div>
+              <div *ngIf="submitted && titleInvalid" class="error-field">
+                <span
+                  ><i class="pi pi-exclamation-circle"></i> El campo Nombre es
+                  obligatorio</span
+                >
+              </div>
+            </div>
+            <div class="form-group col-6 px-5">
+              <div class="floating-label-content">
+                <input
+                  id="detail"
+                  class="floating-input"
+                  type="text"
+                  placeholder=" "
+                  formControlName="detail"
+                  [ngClass]="{ 'error-field-input': submitted && detailInvalid }"
+                />
+                <label for="detail" class="floating-label"
+                  >Detalle<span class="text-danger">*</span></label
+                >
+              </div>
+              <div *ngIf="submitted && detailInvalid" class="error-field">
+                <span
+                  ><i class="pi pi-exclamation-circle"></i> El campo Detalle
+                  es obligatorio</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="form-group col-6 px-5">
+              <div class="floating-label-content">
+                <input
+                  id="duration"
+                  class="floating-input"
+                  type="text"
+                  placeholder=" "
+                  formControlName="duration"
+                  [ngClass]="{ 'error-field-input': submitted && durationInvalid }"
+                  mask="00:00"
+                />
+                <label for="duration" class="floating-label"
+                  >Duración<span class="text-danger">*</span></label
+                >
+              </div>
+              <div *ngIf="submitted && durationInvalid" class="error-field">
+                <span
+                  ><i class="pi pi-exclamation-circle"></i> El campo Duración
+                  es obligatorio</span
+                >
+              </div>
+            </div>
+            <div class="form-group col-6 px-5">
+              <div class="floating-label-content">
+                <input
+                  id="price"
+                  class="floating-input"
+                  type="text"
+                  placeholder=" "
+                  formControlName="price"
+                  mask="separator"
+                  [showMaskTyped] = "false"
+                  thousandSeparator="."
+                />
+                <label for="price" class="floating-label"
+                  >Precio<span class="text-danger">*</span></label
+                >
+              </div>
+              <div *ngIf="submitted && priceInvalid" class="error-field">
+                <span
+                  ><i class="pi pi-exclamation-circle"></i> El campo Precio
+                  es obligatorio</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="form-group col-6 text-end">
+              <button
+                pButton
+                label="Cancelar"
+                [icon]="iconCancel"
+                [disabled]="loadButton"
+                class="p-button-sm p-button-secondary p-button-text"
+                routerLink="/services"
+              ></button>
+            </div>
+            <div class="form-group col-6 text-start">
+              <button
+                pButton
+                type="submit"
+                label="Guardar"
+                [icon]="iconSave"
+                [disabled]="loadButton"
+                class="p-button-sm"
+              ></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

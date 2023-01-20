@@ -7,7 +7,7 @@ import { AuthenticationService } from './services/authentication.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   user: User;
@@ -23,12 +23,13 @@ export class AppComponent {
 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        if (event.url.indexOf('home') > 0) {
-          this.isHome = true
+        if (event.url == '/home' || event.url == '/') {
+          this.isHome = true;
         }
         else {
           this.isHome = false;
         }
+        console.log(event.url);
       }
     });
 

@@ -1,0 +1,19 @@
+<div class="mt-2">
+  <ul class="list-group">
+    <li class="list-group-item"><span class="fw-bolder">Id: </span>{{ task.serviceId }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Nombre: </span>{{ task.title }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Detalle: </span>{{ task.detail }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Duración: </span>{{ task.duration | formatDuration }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Precio: </span>{{ task.price | mask: 'separator':'.' }}</li>
+  </ul>
+</div>
+<div class="mt-2 text-center">
+  <button
+    pButton
+    pRipple
+    label="Cerrar"
+    icon="pi pi-times"
+    (click)="closeModal()"
+    class="p-button-sm p-button-info"
+  ></button>
+</div>

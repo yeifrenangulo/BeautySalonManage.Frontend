@@ -1,0 +1,15 @@
+@import '../../../../../assets/libs/css/variables.scss';
+
+::ng-deep .header-delete {
+  .p-dialog-header {
+    background-color: $yellow-500 !important;
+  }
+}
+
+.button-warning {
+  color: $color-font;
+  margin-left: 0.5rem;
+  &:hover {
+    color: $color-font !important;
+  }
+}

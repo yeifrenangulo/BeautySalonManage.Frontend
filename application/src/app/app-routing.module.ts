@@ -2,10 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { 
-    path: 'login', 
-    loadChildren: () => import('./main/login/login.module').then(m => m.LoginModule), 
-  },
   {
     path: 'customers',
     loadChildren: () => import('./main/customers/customers.module').then(m => m.CustomersModule),
@@ -13,6 +9,14 @@ const routes: Routes = [
   { 
     path: 'home', 
     loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule),
+  },
+  { 
+    path: 'login', 
+    loadChildren: () => import('./main/login/login.module').then(m => m.LoginModule), 
+  },
+  { 
+    path: 'services', 
+    loadChildren: () => import('./main/task/task.module').then(m => m.TaskModule), 
   },
   {
     path: '**',

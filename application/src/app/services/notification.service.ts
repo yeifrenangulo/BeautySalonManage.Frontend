@@ -23,4 +23,8 @@ export class NotificationService {
   showInfo(message: string, time = 5000, progressBar = false) {
     this.messageService.add({severity:'info', summary:'Info', detail: message, life: time});
   }
+
+  triggerToast() {
+    this.messageService.add({severity:'custom', summary: '', detail: '', icon: ''});
+  }
 }

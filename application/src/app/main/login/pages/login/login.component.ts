@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         error: error => {
           this.loading = false;
           this.submitted = false;
-          this.notifier.showWarning('');
+          this.notifier.triggerToast();
           throw new HttpErrorResponse(error);
         }
       });

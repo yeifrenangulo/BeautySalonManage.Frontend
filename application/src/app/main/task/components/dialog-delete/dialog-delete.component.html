@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <p>¿Desea elmiminar el servicio <span class="fw-bolder">{{ task.title }}</span>?</p>
+</div>
+<div class="d-flex justify-content-end mt-4">
+  <button
+    pButton
+    pRipple
+    type="button"
+    label="Cancelar"
+    icon="pi pi-times"
+    class="p-button-sm p-button-secondary p-button-text"
+    (click)="closeModal()"
+  ></button>
+  <button
+    pButton
+    pRipple
+    type="button"
+    label="Sí, eliminar"
+    icon="pi pi-check"
+    class="p-button-sm p-button-warning button-warning"
+    (click)="deleteTask(task.serviceId)"
+  ></button>
+</div>

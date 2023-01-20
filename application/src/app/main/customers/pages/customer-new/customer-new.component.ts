@@ -24,6 +24,9 @@ export class CustomerNewComponent {
   loading = false;
   submitted = false;
   titlePage = "Registrar";
+  loadButton = false;
+  iconCancel = 'pi pi-times';
+  iconSave = 'pi pi-check';
 
   get nameInvalid() { return this.customerForm.get('name').invalid; }
   get surnameInvalid() { return this.customerForm.get('surname').invalid; }
@@ -87,6 +90,8 @@ export class CustomerNewComponent {
   }
 
   editCustomer(): void {
+    this.loaderButton(true);
+
     let data = {
       "customerId": this.idCustomer,
       "phone": this.customerForm.get('phone').value.toString(),
@@ -97,23 +102,28 @@ export class CustomerNewComponent {
     this.service.editCustomer(this.idCustomer, data)
       .subscribe({
         next: () => {
+          this.loaderButton(false);
           this.submitted = false;
           this.notifier.showSuccess('Cliente actualizado exitosamente', 5000, true);
           this.router.navigateByUrl('/customers');
         },
         error: error => {
+          this.loaderButton(false);
           this.submitted = false;
+          this.notifier.triggerToast();
           throw new HttpErrorResponse(error);
         }
       });
   }
 
   newCustomer(): void {
+    this.loaderButton(true);
+
     let data = {
       "name": this.customerForm.get('name').value,
       "surname": this.customerForm.get('surname').value,
       "phone": this.customerForm.get('phone').value.toString(),
-      "dateBirth": this.customerForm.get('dateBirth').value != '' ? this.customerForm.get('dateBirth').value.toISOString() : null,
+      "dateBirth": this.customerForm.get('dateBirth').value ?? this.customerForm.get('dateBirth').value.toISOString(),
       "genderId": this.customerForm.get('gender').value
     }
 
@@ -129,9 +139,12 @@ export class CustomerNewComponent {
             dateBirth: null,
             gender: '',
           });
+          this.loaderButton(false);
         },
         error: error => {
+          this.loaderButton(false);
           this.submitted = false;
+          this.notifier.triggerToast();
           throw new HttpErrorResponse(error);
         }
       });
@@ -156,5 +169,18 @@ export class CustomerNewComponent {
         return res;
       }))
       .subscribe();
+  }
+
+  loaderButton(active: boolean) {
+    if (active) {
+      this.loadButton = true;
+      this.iconCancel = 'pi pi-spin pi-spinner';
+      this.iconSave = 'pi pi-spin pi-spinner';
+    }
+    else {
+      this.loadButton = false;
+      this.iconCancel = 'pi pi-times';
+      this.iconSave = 'pi pi-check';
+    }
   }
 }
