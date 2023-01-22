@@ -1,1 +1,46 @@
-<p>collaborator-list works!</p>
+<div class="mt-5">
+  <div class="animate__animated animate__fadeInRight">
+    <h1 class="tittle-medium">Colaboradores</h1>
+    <div class="container-form">
+      <div class="d-flex flex-column">
+        <div class="col-12 text-end">
+          <button pButton pRipple label="Agregar colaborador" icon="pi pi-plus" class="p-button-sm mr-2" routerLink="/collaborators/new"></button>
+        </div>
+        <div class="col-12 mt-2 animate__animated animate__fadeInUp" *ngIf="loading">
+          <app-progressbar-table caption="Estamos consultando a los clientes registrados"></app-progressbar-table>
+        </div>
+        <div class="col-12 mt-2 animate__animated animate__fadeInUp">
+          <table class="table table-default" *ngIf="collaborators?.length > 0">
+            <thead>
+              <tr>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Teléfono</th>
+                <th class="text-center">Correo Electrónico</th>
+                <th class="text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor="let collaborator of collaborators; let i = index">
+                <td class="text-center">
+                  <button class="link-detail" pTooltip="Ver detalle" tooltipPosition="bottom" (click)="showModalDetail(collaborator)">
+                    {{ collaborator.name }} {{ collaborator.surname }}
+                  </button>
+                </td>
+                <td class="text-center">{{ collaborator.phone | mask: '000 000 0000' }}</td>
+                <td class="text-center">{{ collaborator.email }}</td>
+                <td class="text-center">
+                  <span class="p-buttonset">
+                    <button pButton type="button" icon="pi pi-pencil" class="button-icon p-button-sm p-button-text p-button-success" pTooltip="Modificar" tooltipPosition="left" routerLink="/collaborators/edit/{{ collaborator.collaboratorId }}"></button>
+                    <button pButton type="button" icon="pi pi-trash" class="button-icon p-button-sm p-button-text p-button-danger" pTooltip="Eliminar" tooltipPosition="right" (click)="showModalDelete(collaborator)"></button>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p-paginator *ngIf="collaborators?.length > 0 && pageTotal > 10" [rows]="10" [totalRecords]="pageTotal" (onPageChange)="changePage($event)"></p-paginator>
+          <app-empty *ngIf="collaborators?.length <= 0 && !loading" caption="Lo sentimos, no se encontraron clientes registrados"></app-empty>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

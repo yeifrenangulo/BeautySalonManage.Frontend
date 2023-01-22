@@ -1,1 +1,23 @@
-<p>dialog-delete works!</p>
+<div class="container mt-4">
+  <p>¿Desea elmiminar al colaborador <span class="fw-bolder">{{ collaborator.name }} {{ collaborator.surname }}</span>?</p>
+</div>
+<div class="d-flex justify-content-end mt-4">
+  <button
+    pButton
+    pRipple
+    type="button"
+    label="Cancelar"
+    icon="pi pi-times"
+    class="p-button-sm p-button-secondary p-button-text"
+    (click)="closeModal()"
+  ></button>
+  <button
+    pButton
+    pRipple
+    type="button"
+    label="Sí, eliminar"
+    icon="pi pi-check"
+    class="p-button-sm p-button-warning button-warning"
+    (click)="deleteCollaborator(collaborator.collaboratorId)"
+  ></button>
+</div>

@@ -1,1 +1,53 @@
-<p>dialog-detail works!</p>
+<div class="mt-3">
+  <h6>Datos personales</h6>
+  <ul class="list-group">
+    <li class="list-group-item"><span class="fw-bolder">Id: </span>{{ collaborator.collaboratorId }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Nombre: </span>{{ collaborator.name }} {{ collaborator.surname }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Teléfono: </span>{{ collaborator.phone }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Dirección: </span>{{ collaborator.address }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Correo Electrónico: </span>{{ collaborator.email }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Género: </span>{{ collaborator.genderDescription }}</li>
+  </ul>
+</div>
+<div class="mt-4">
+  <h6>Contacto de Emergencia</h6>
+  <ul class="list-group">
+    <li class="list-group-item"><span class="fw-bolder">Nombre de Contacto: </span>{{ collaborator.nameContact }}</li>
+    <li class="list-group-item"><span class="fw-bolder">Teléfono de Contacto: </span>{{ collaborator.phoneContact }}</li>
+  </ul>
+</div>
+<div class="mt-4">
+  <h6>Servicios</h6>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <table class="table table-sm text-center">
+            <thead>
+              <tr>
+                <th>Servicio</th>
+                <th>Porcentaje</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let service of collaborator.services">
+                <td>{{ service.serviceTitle }}</td>
+                <td>{{ service.percentage }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="mt-2 text-center">
+  <button
+    pButton
+    pRipple
+    label="Cerrar"
+    icon="pi pi-times"
+    (click)="closeModal()"
+    class="p-button-sm p-button-info"
+  ></button>
+</div>

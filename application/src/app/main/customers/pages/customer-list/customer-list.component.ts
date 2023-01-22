@@ -41,7 +41,6 @@ export class CustomerListComponent {
         this.pageSize = res.pageSize;
       }
 
-      console.log(this.customers);
       return res;
     }))
     .subscribe(() => this.loading = false);

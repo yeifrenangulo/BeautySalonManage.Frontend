@@ -1,0 +1,16 @@
+
+@import '../../../../../assets/libs/css/variables.scss';
+
+::ng-deep .p-panel .p-panel-header .p-panel-title {
+  font-weight: 500;
+  color: #3A3A3A;
+}
+
+::ng-deep .button-icon {
+  padding: 5px !important;
+}
+
+.thead-color {
+  background-color: $color-background;
+  color: #3a3a3aaf;
+}

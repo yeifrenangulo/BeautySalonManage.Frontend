@@ -22,7 +22,7 @@ export class GlobalErrorHandler implements ErrorHandler {
     if (error instanceof HttpErrorResponse) {
       // Server Error
 
-      if (error.status === 400 || error.status === 404) {
+      if (error.status === 400) {
         try {
           if (error.error['Errors']) {
             for (let err of error.error['Errors']) {
@@ -39,6 +39,20 @@ export class GlobalErrorHandler implements ErrorHandler {
         }
         catch(e) {
           notifier.showError('Hubo un error interno, comuniquese con el administrador', 5000);
+        }
+      }
+      else if (error.status === 404) {
+        if (error.error['Errors']) {
+          for (let err of error.error['Errors']) {
+            notifier.showInfo(err, 5000);
+          }
+        }
+        else if (error.error['errors']) {
+          notifier.showInfo(error.error['title'], 5000);
+        }
+        else {
+          message = errorService.getServerMessage(error);
+          notifier.showInfo(message, 5000);
         }
       }
       else {

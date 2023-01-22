@@ -5,6 +5,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CalendarModule } from 'primeng/calendar';
+import { ColorPickerModule } from 'primeng/colorpicker';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DividerModule } from 'primeng/divider';
 import { InputSwitchModule } from 'primeng/inputswitch';
@@ -36,6 +37,7 @@ const maskConfig: Partial<IConfig> = {
     ButtonModule,
     BsDatepickerModule,
     CalendarModule,
+    ColorPickerModule,
     DynamicDialogModule,
     DividerModule,
     InputSwitchModule,

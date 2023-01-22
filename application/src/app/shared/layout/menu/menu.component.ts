@@ -22,6 +22,7 @@ export class MenuComponent {
   }
 
   logout() {
+    this.toggle = false;
     this.authenticationService.logout();
   }
 }

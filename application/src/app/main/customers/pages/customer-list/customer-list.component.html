@@ -37,7 +37,7 @@
               </tr>
             </tbody>
           </table>
-          <p-paginator *ngIf="customers?.length > 0" [rows]="10" [totalRecords]="pageTotal" (onPageChange)="changePage($event)"></p-paginator>
+          <p-paginator *ngIf="customers?.length > 0 && pageTotal > 10" [rows]="10" [totalRecords]="pageTotal" (onPageChange)="changePage($event)"></p-paginator>
           <app-empty *ngIf="customers?.length <= 0 && !loading" caption="Lo sentimos, no se encontraron clientes registrados"></app-empty>
         </div>
       </div>

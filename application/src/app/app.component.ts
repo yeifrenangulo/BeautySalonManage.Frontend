@@ -26,10 +26,13 @@ export class AppComponent {
         if (event.url == '/home' || event.url == '/') {
           this.isHome = true;
         }
+        else if (event.url == '/login') {
+          this.toggle = false;
+          this.isHome = false;
+        }
         else {
           this.isHome = false;
         }
-        console.log(event.url);
       }
     });
 
@@ -50,6 +53,7 @@ export class AppComponent {
   }
 
   logout() {
+    this.toggle = false;
     this.authenticationService.logout();
   }
 }

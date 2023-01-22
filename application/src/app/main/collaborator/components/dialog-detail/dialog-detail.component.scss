@@ -1,0 +1,8 @@
+@import '../../../../../assets/libs/css/variables.scss';
+
+::ng-deep .header-detail {
+  .p-dialog-header {
+    background-color: $primary-500 !important;
+    color: $color-white !important;
+  }
+}

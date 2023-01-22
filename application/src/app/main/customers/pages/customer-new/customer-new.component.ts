@@ -153,6 +153,7 @@ export class CustomerNewComponent {
   getCustomerById(id: number): void {
     this.service.getById(id)
       .pipe(map(res => {
+
         if (res.succeded) {
           this.idCustomer = res.data['customerId'];
           this.isCreated = false;

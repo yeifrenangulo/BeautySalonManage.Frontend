@@ -1,1 +1,301 @@
-<p>collaborator-new works!</p>
+<div class="mt-5">
+  <div class="animate__animated animate__fadeInUp" *ngIf="loading">
+    <app-spinner-page></app-spinner-page>
+  </div>
+  <div class="animate__animated animate__fadeInRight" *ngIf="!loading">
+    <h1 class="tittle-medium">{{ titlePage }} colaborador</h1>
+    <div class="container-form">
+      <div class="control-form-md">
+        <form [formGroup]="collaboratorForm" (submit)="onSubmit()">
+          <p-panel header="Datos personales">
+            <div class="row mt-5">
+              <div class="form-group col-6 px-5">
+                <div class="floating-label-content">
+                  <input
+                    id="name"
+                    class="floating-input"
+                    type="text"
+                    placeholder=" "
+                    formControlName="name"
+                    [ngClass]="{
+                      'error-field-input': submitted && nameControl.invalid
+                    }"
+                    [readonly]="!isCreated"
+                    (keyup)="onKeyupEvent($event)"
+                  />
+                  <label for="name" class="floating-label"
+                    >Nombre<span class="text-danger">*</span></label
+                  >
+                </div>
+                <div *ngIf="submitted && nameControl.invalid" class="error-field">
+                  <span
+                    ><i class="pi pi-exclamation-circle"></i> El campo Nombre es
+                    obligatorio</span
+                  >
+                </div>
+              </div>
+              <div class="form-group col-6 px-5">
+                <div class="floating-label-content">
+                  <input
+                    id="surname"
+                    class="floating-input"
+                    type="text"
+                    placeholder=" "
+                    formControlName="surname"
+                    [ngClass]="{
+                      'error-field-input': submitted && surnameControl.invalid
+                    }"
+                    [readonly]="!isCreated"
+                    (keyup)="onKeyupEvent($event)"
+                  />
+                  <label for="surname" class="floating-label"
+                    >Apellido<span class="text-danger">*</span></label
+                  >
+                </div>
+                <div *ngIf="submitted && surnameControl.invalid" class="error-field">
+                  <span
+                    ><i class="pi pi-exclamation-circle"></i> El campo Apellido
+                    es obligatorio</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="form-group col-6 px-5">
+                <div class="floating-label-content">
+                  <input
+                    id="phone"
+                    class="floating-input"
+                    type="text"
+                    placeholder=" "
+                    formControlName="phone"
+                    mask="000 000 0000"
+                    [ngClass]="{
+                      'error-field-input': submitted && phoneControl.invalid
+                    }"
+                  />
+                  <label for="phone" class="floating-label"
+                    >Teléfono<span class="text-danger">*</span></label
+                  >
+                </div>
+                <div *ngIf="submitted && phoneControl.invalid" class="error-field">
+                  <span
+                    ><i class="pi pi-exclamation-circle"></i> El campo Teléfono
+                    es obligatorio</span
+                  >
+                </div>
+              </div>
+              <div class="form-group col-6 px-5">
+                <div class="floating-label-content">
+                  <input
+                    id="address"
+                    class="floating-input"
+                    type="text"
+                    placeholder=" "
+                    formControlName="address"
+                    [ngClass]="{
+                      'error-field-input': submitted && addressControl.invalid
+                    }"
+                  />
+                  <label for="address" class="floating-label"
+                    >Dirección<span class="text-danger">*</span></label
+                  >
+                </div>
+                <div *ngIf="submitted && addressControl.invalid" class="error-field">
+                  <span
+                    ><i class="pi pi-exclamation-circle"></i> El campo Dirección
+                    es obligatorio</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="form-group col-6 px-5">
+                <div class="floating-label-content">
+                  <input
+                    id="email"
+                    class="floating-input"
+                    type="text"
+                    placeholder=" "
+                    formControlName="email"
+                    [ngClass]="{
+                      'error-field-input': submitted && emailControl.invalid
+                    }"
+                    [readonly]="!isCreated"
+                  />
+                  <label for="email" class="floating-label"
+                    >Correo Electrónico<span class="text-danger">*</span></label
+                  >
+                </div>
+                <div *ngIf="submitted && emailControl.invalid" class="error-field">
+                  <span
+                    ><i class="pi pi-exclamation-circle"></i> El campo Correo Electrónico no
+                    es válido</span
+                  >
+                </div>
+              </div>
+              <div class="form-group col-6 px-5 mb-5">
+                <div class="floating-label-content">
+                  <select
+                    id="gender"
+                    class="floating-select"
+                    formControlName="genderId"
+                    [ngClass]="{
+                      'error-field-input': submitted && genderControl.invalid
+                    }"
+                    required
+                  >
+                    <option value></option>
+                    <option value="1">Hombre</option>
+                    <option value="2">Mujer</option>
+                  </select>
+                  <label for="gender" class="floating-label"
+                    >Género<span class="text-danger">*</span></label
+                  >
+                </div>
+                <div *ngIf="submitted && genderControl.invalid" class="error-field">
+                  <span
+                    ><i class="pi pi-exclamation-circle"></i> El campo Género es
+                    obligatorio</span
+                  >
+                </div>
+              </div>
+            </div>
+          </p-panel>
+          <p-panel header="Contacto de Emergencia" styleClass="mt-5">
+            <div class="row mt-5 mb-5">
+              <div class="form-group col-6 px-5">
+                <div class="floating-label-content">
+                  <input
+                    id="nameContact"
+                    class="floating-input"
+                    type="text"
+                    placeholder=" "
+                    formControlName="nameContact"
+                    (keyup)="onKeyupEvent($event)"
+                  />
+                  <label for="nameContact" class="floating-label">Nombre de Contacto</label>
+                </div>
+              </div>
+              <div class="form-group col-6 px-5">
+                <div class="floating-label-content">
+                  <input
+                    id="phoneContact"
+                    class="floating-input"
+                    type="text"
+                    placeholder=" "
+                    formControlName="phoneContact"
+                    mask="000 000 0000"
+                  />
+                  <label for="phoneContact" class="floating-label">Teléfono de Contacto</label>
+                </div>
+              </div>
+            </div>
+          </p-panel>
+          <p-panel header="Servicios" styleClass="mt-5">
+            <div class="row justify-content-center">
+              <div class="col-11">
+                <span style="font-size: 20px;">Color Identificador: </span>
+                <p-colorPicker formControlName="color"></p-colorPicker>
+                <hr>
+              </div>
+            </div>
+            <div class="mt-3 row justify-content-center" formArrayName="services">
+              <div class="col-11">
+                <table class="table animate__animated animate__fadeIn" *ngIf="services.length > 0">
+                  <thead class="thead-color">
+                    <tr>
+                      <th class="text-center" style="width: 50%;">Servicio</th>
+                      <th class="text-center" style="width: 30%;">Porcentaje</th>
+                      <th class="text-center" style="width: 20%;"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let serviceForm of services.controls; let i = index">
+                      <ng-container [formGroupName]="i">
+                        <td class="text-center py-3">
+                          <div class="floating-label-content">
+                            <select
+                              id="serviceId"
+                              class="floating-select"
+                              formControlName="serviceId"
+                              [ngClass]="{
+                                'error-field-input': submitted && serviceInvalid(i)
+                              }"
+                              required
+                            >
+                            <option [ngValue]="null" disabled></option>
+                            <option *ngFor="let task of tasks" [ngValue]="task.serviceId">
+                              {{ task.title }}
+                            </option>
+                            </select>
+                            <label for="serviceId" class="floating-label">Servicio</label>
+                          </div>
+                          <div *ngIf="submitted && serviceInvalid(i)" class="error-field">
+                            <span><i class="pi pi-exclamation-circle"></i> Seleccione el servicio</span>
+                          </div>
+                        </td>
+                        <td class="text-center py-3">
+                          <div class="px-5">
+                            <div class="floating-label-content">
+                              <input
+                                id="percentage"
+                                class="floating-input"
+                                type="text"
+                                placeholder=" "
+                                formControlName="percentage"
+                                [ngClass]="{
+                                  'error-field-input': submitted && percentageInvalid(i)
+                                }"
+                                mask="0*"
+                                suffix="%"
+                              />
+                              <label for="percentage" class="floating-label">Porcentaje</label>
+                            </div>
+                          </div>
+                          <div *ngIf="submitted && percentageInvalid(i)" class="error-field">
+                            <span><i class="pi pi-exclamation-circle"></i> Ingrese el valor</span>
+                          </div>
+                        </td>
+                        <td class="text-center py-3">
+                          <button pButton pRipple icon="pi pi-times" type="button" class="p-button-sm p-button-danger" (click)="removeService(i)"></button>
+                        </td>
+                      </ng-container>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-11 text-start">
+                <button pButton pRipple label="Agregar" type="button" icon="pi pi-plus" class="p-button-sm p-button-success" (click)="addService()"></button>
+              </div>
+            </div>
+          </p-panel>
+          <div class="row mt-5">
+            <div class="form-group col-6 text-end">
+              <button
+                pButton
+                pRipple
+                label="Cancelar"
+                [icon]="iconCancel"
+                [disabled]="loadButton"
+                class="p-button-sm p-button-secondary p-button-text mr-2"
+                routerLink="/collaborators"
+              ></button>
+            </div>
+            <div class="form-group col-6 text-start">
+              <button
+                pButton
+                pRipple
+                type="submit"
+                label="Guardar"
+                [icon]="iconSave"
+                [disabled]="loadButton"
+                class="p-button-sm mr-2"
+              ></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
